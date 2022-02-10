@@ -3,7 +3,6 @@ package com.api.wrappers;
 import java.util.Map;
 
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 public interface IRestAssuredBaseDesign {	
@@ -63,6 +62,6 @@ public interface IRestAssuredBaseDesign {
 	 * @param response - Passing JSON Response interface object
 	 * @return size of the list object
 	 */
-	public int getListSize(ValidatableResponse response);
+	public int getListSize(Response response);
 
 }

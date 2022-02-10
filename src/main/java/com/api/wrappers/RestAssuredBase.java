@@ -5,7 +5,6 @@ import java.util.Map;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 public class RestAssuredBase implements IRestAssuredBaseDesign {	
@@ -34,9 +33,13 @@ public class RestAssuredBase implements IRestAssuredBaseDesign {
 		return response.jsonPath().getList(jsonPath).size();
 	}
 	
-	public int getListSize(ValidatableResponse response) {
-		ArrayList<Map<String,?>> list = response.extract().jsonPath().get("");
+	public int getListSize(Response response) {
+		ArrayList<Map<String,?>> list = response.jsonPath().get("");
 		return list.size();
+	}
+	
+	public Response post(RequestSpecification spec, Map<String, String> headers, Object body) {
+		return spec.headers(headers).body(body).post();		
 	}
 
 }
